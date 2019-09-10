@@ -6,8 +6,7 @@
         :src="'/static/img/illustrations/500.svg'"
         class="large centered"
       />
-      <h1>It's not you, it's us</h1>
-      <h3>Our developers have been notified and they are on it.</h3>
+      <h1>Something went wrong :-(</h1>
       <p>Just in case if you were wondering, the error is</p>
       <h3 class="ui red large text">
         {{ error }}

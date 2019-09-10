@@ -29,7 +29,22 @@ export function searchV2(query) {
   })
 }
 
+export function getProgress() {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.progress())
+      .then((response) => {
+        resolve(response.data.progress)
+      })
+      .catch((err) => {
+        err.message = err.message || `Unable to fetch progress at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export default {
   searchV1,
-  searchV2
+  searchV2,
+  getProgress
 }

@@ -12,6 +12,14 @@
                   class="left basic aligned"
                   @click="goto(part.id)"
                 >
+                  <span
+                    v-if="!isCompleted(part.id)"
+                    style="margin-right: 0.3em;"
+                    >➖</span
+                  >
+                  <span v-if="isCompleted(part.id)" style="margin-right: 0.3em;"
+                    >✅</span
+                  >
                   <span class="ui medium text" style="margin-right: 0.7em;">{{
                     part.name
                   }}</span
@@ -36,6 +44,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BasePage from '~/components/Pages/BasePage'
 
 export default {
@@ -58,10 +67,17 @@ export default {
       ]
     }
   },
-  fetch({ store, redirect }) {},
+  computed: {
+    ...mapState({
+      progress: (state) => state.progress
+    })
+  },
   methods: {
     goto(part) {
       this.$router.push(`/${part}`)
+    },
+    isCompleted(id) {
+      return this.progress.parts_completed && this.progress.parts_completed[id]
     }
   }
 }
