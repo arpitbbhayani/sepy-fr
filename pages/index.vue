@@ -1,36 +1,37 @@
 <template>
   <BasePage>
-    <sui-divider hidden />
-    <sui-header class="center aligned">
-      <h1>Build your own Search Engine</h1>
-    </sui-header>
-    <sui-divider hidden />
-    <sui-divider hidden />
-    <sui-grid :columns="2">
-      <sui-grid-column>
-        <sui-container text class="center aligned">
-          <sui-list vertical>
-            <sui-list-item v-for="part in parts" :key="part.name">
-              <sui-button fluid class="left aligned" @click="goto(part.id)">
-                <span class="ui medium text" style="margin-right: 0.7em;">{{
-                  part.name
-                }}</span
-                >👉<span class="ui medium text" style="margin-left: 0.7em;">{{
-                  part.description
-                }}</span>
-              </sui-button>
-            </sui-list-item>
-          </sui-list>
-        </sui-container>
-      </sui-grid-column>
-      <sui-grid-column>
-        <sui-divider hidden class="section" />
-        <sui-image
-          class="large centered"
-          src="/static/img/illustrations/search.svg"
-        />
-      </sui-grid-column>
-    </sui-grid>
+    <sui-divider hidden class="section" />
+    <sui-container>
+      <sui-grid :columns="2">
+        <sui-grid-column>
+          <sui-container class="center aligned">
+            <sui-list vertical>
+              <sui-list-item v-for="part in parts" :key="part.name">
+                <sui-button
+                  fluid
+                  class="left basic aligned"
+                  @click="goto(part.id)"
+                >
+                  <span class="ui medium text" style="margin-right: 0.7em;">{{
+                    part.name
+                  }}</span
+                  >👉<span class="ui medium text" style="margin-left: 0.7em;">{{
+                    part.description
+                  }}</span>
+                </sui-button>
+              </sui-list-item>
+            </sui-list>
+          </sui-container>
+        </sui-grid-column>
+        <sui-grid-column>
+          <sui-divider hidden class="section" />
+          <sui-image
+            class="large centered"
+            src="/static/img/illustrations/search.svg"
+          />
+        </sui-grid-column>
+      </sui-grid>
+    </sui-container>
   </BasePage>
 </template>
 
