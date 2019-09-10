@@ -1,6 +1,36 @@
 <template>
   <BasePage>
-    Search Engine
+    <sui-divider hidden />
+    <sui-header class="center aligned">
+      <h1>Build your own Search Engine</h1>
+    </sui-header>
+    <sui-divider hidden />
+    <sui-divider hidden />
+    <sui-grid :columns="2">
+      <sui-grid-column>
+        <sui-container text class="center aligned">
+          <sui-list vertical>
+            <sui-list-item v-for="part in parts" :key="part.name">
+              <sui-button fluid class="left aligned" @click="goto(part.id)">
+                <span class="ui medium text" style="margin-right: 0.7em;">{{
+                  part.name
+                }}</span
+                >👉<span class="ui medium text" style="margin-left: 0.7em;">{{
+                  part.description
+                }}</span>
+              </sui-button>
+            </sui-list-item>
+          </sui-list>
+        </sui-container>
+      </sui-grid-column>
+      <sui-grid-column>
+        <sui-divider hidden class="section" />
+        <sui-image
+          class="large centered"
+          src="/static/img/illustrations/search.svg"
+        />
+      </sui-grid-column>
+    </sui-grid>
   </BasePage>
 </template>
 
@@ -11,6 +41,27 @@ export default {
   components: {
     BasePage
   },
-  fetch({ store, redirect }) {}
+  data() {
+    return {
+      parts: [
+        { id: 1, name: 'Part 01', description: 'Reading the corpus' },
+        { id: 2, name: 'Part 02', description: 'Cleaning the text' },
+        { id: 3, name: 'Part 03', description: 'Extracting the excerpt' },
+        { id: 4, name: 'Part 04', description: 'Tokenize' },
+        { id: 5, name: 'Part 05', description: 'Normalize' },
+        { id: 6, name: 'Part 06', description: 'Building inverted index' },
+        { id: 7, name: 'Part 07', description: 'Search v1' },
+        { id: 8, name: 'Part 08', description: 'Building term frequency' },
+        { id: 9, name: 'Part 09', description: 'Ranking Function' },
+        { id: 10, name: 'Part 10', description: 'Search v2' }
+      ]
+    }
+  },
+  fetch({ store, redirect }) {},
+  methods: {
+    goto(part) {
+      this.$router.push(`/${part}`)
+    }
+  }
 }
 </script>
