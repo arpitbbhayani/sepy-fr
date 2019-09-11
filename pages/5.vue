@@ -51,9 +51,9 @@ export default {
     doNormalize() {
       this.actStartLoading()
       status5(this.text)
-        .then((normalizedText) => {
+        .then(({ text }) => {
           this.actStopLoading()
-          this.normalizedText = normalizedText
+          this.normalizedText = text
           if (!this.normalizedText) {
             this.actPublishMessage({
               message: 'Empty normalized word was generated for the given word',

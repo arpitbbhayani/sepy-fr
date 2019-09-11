@@ -57,7 +57,7 @@ export default {
     doExtractTokens() {
       this.actStartLoading()
       status4(this.text)
-        .then((tokens) => {
+        .then(({ tokens }) => {
           this.actStopLoading()
           this.tokens = tokens
           if (!this.tokens.length) {

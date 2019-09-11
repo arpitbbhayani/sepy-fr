@@ -63,7 +63,7 @@ export function status2(text) {
     dreq
       .get(apiEndpoints.status2(text))
       .then((response) => {
-        resolve(response.data.text)
+        resolve(response.data)
       })
       .catch((err) => {
         err.message = err.message || `Unable to clean text at the moment.`
@@ -77,7 +77,7 @@ export function status3(text) {
     dreq
       .get(apiEndpoints.status3(text))
       .then((response) => {
-        resolve(response.data.text)
+        resolve(response.data)
       })
       .catch((err) => {
         err.message = err.message || `Unable to extract excerpt at the moment.`
@@ -91,7 +91,7 @@ export function status4(text) {
     dreq
       .get(apiEndpoints.status4(text))
       .then((response) => {
-        resolve(response.data.tokens)
+        resolve(response.data)
       })
       .catch((err) => {
         err.message = err.message || `Unable to extract tokens at the moment.`
@@ -105,11 +105,27 @@ export function status5(text) {
     dreq
       .get(apiEndpoints.status5(text))
       .then((response) => {
-        resolve(response.data.text)
+        resolve(response.data)
       })
       .catch((err) => {
         err.message =
           err.message || `Unable to normalize the word at the moment.`
+        reject(err)
+      })
+  })
+}
+
+export function status6(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status6(text))
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message =
+          err.message ||
+          `Unable to fetch posting list for the word at the moment.`
         reject(err)
       })
   })

@@ -52,7 +52,7 @@ export default {
     doClean() {
       this.actStartLoading()
       status2(this.text)
-        .then((cleanedText) => {
+        .then(({ cleanedText }) => {
           this.actStopLoading()
           this.cleanedText = cleanedText
           if (!this.cleanedText) {

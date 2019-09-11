@@ -41,7 +41,11 @@ export default {
       }
     } catch (err) {
       store.dispatch('panic', err.message)
-      return {}
+      return {
+        status: {
+          documents: []
+        }
+      }
     }
   }
 }

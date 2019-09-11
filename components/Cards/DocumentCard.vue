@@ -1,7 +1,15 @@
 <template>
   <sui-segment class="left aligned">
-    <h3>{{ document.title }}</h3>
-    <p>
+    <div>
+      <span class="ui tiny text">Document ID: {{ document.id }}</span>
+      <sui-label v-if="score !== -1" class="large right floated">
+        Score: {{ score }}
+      </sui-label>
+    </div>
+    <h4 class="ui large text" style="margin: 0.3em 0 0.3em 0;">
+      {{ document.title }}
+    </h4>
+    <p class="ui grey text">
       {{ document.excerpt.slice(0, 128) || document.body.slice(0, 128) }}...
     </p>
   </sui-segment>
@@ -13,6 +21,11 @@ export default {
     document: {
       type: Object,
       required: true
+    },
+    score: {
+      type: Number,
+      required: false,
+      default: -1
     }
   }
 }

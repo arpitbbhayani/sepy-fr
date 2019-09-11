@@ -51,7 +51,7 @@ export default {
     doExtractExcerpt() {
       this.actStartLoading()
       status3(this.text)
-        .then((excerpt) => {
+        .then(({ excerpt }) => {
           this.actStopLoading()
           this.excerpt = excerpt
           if (!this.excerpt) {
