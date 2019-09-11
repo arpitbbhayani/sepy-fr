@@ -15,7 +15,24 @@
         placeholder="Word for which you want term frequencies"
       />
       <div v-if="freqs.length">
-        {{ freqs }}
+        <sui-table class="basic noborder">
+          <sui-table-header>
+            <sui-table-row>
+              <sui-table-header-cell>Document</sui-table-header-cell>
+              <sui-table-header-cell
+                >Frequency of {{ text }}</sui-table-header-cell
+              >
+            </sui-table-row>
+          </sui-table-header>
+          <sui-table-body>
+            <sui-table-row v-for="freq in freqs" :key="freq.doc_id">
+              <sui-table-cell>
+                <DocumentCard :document="freq.document.doc" :score="-1" />
+              </sui-table-cell>
+              <sui-table-cell>{{ freq.frequency }}</sui-table-cell>
+            </sui-table-row>
+          </sui-table-body>
+        </sui-table>
       </div>
     </DForm>
   </AppPage>
@@ -27,6 +44,7 @@ import { mapActions } from 'vuex'
 import DForm from '~/components/Form/DForm'
 import DInput from '~/components/Form/DInput'
 import AppPage from '~/components/Pages/AppPage'
+import DocumentCard from '~/components/Cards/DocumentCard'
 
 import { status8 } from '~/services/sepy'
 
@@ -34,7 +52,8 @@ export default {
   components: {
     AppPage,
     DForm,
-    DInput
+    DInput,
+    DocumentCard
   },
   data() {
     return {
