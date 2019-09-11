@@ -45,6 +45,7 @@ export const actions = {
           resolve(progress)
         })
         .catch((err) => {
+          commit('SET_ERROR', `${err.message}`)
           reject(err)
         })
     })

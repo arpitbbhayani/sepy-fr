@@ -7,6 +7,7 @@
         class="large centered"
       />
       <h1>Something went wrong :-(</h1>
+      <h3>Check your server logs and see if there are any errors.</h3>
       <p>Just in case if you were wondering, the error is</p>
       <h3 class="ui red large text">
         {{ error }}

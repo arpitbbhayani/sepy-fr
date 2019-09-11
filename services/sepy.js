@@ -43,8 +43,24 @@ export function getProgress() {
   })
 }
 
+export function status1() {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status1())
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message =
+          err.message || `Unable to fetch status of this part at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export default {
   searchV1,
   searchV2,
-  getProgress
+  getProgress,
+  status1
 }
