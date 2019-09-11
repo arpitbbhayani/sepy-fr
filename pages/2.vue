@@ -11,12 +11,18 @@
         isrequired
         placeholder="Text to clean"
       />
-      <DTextarea v-model="cleanedText" label="Cleaned Text" :readonly="true" />
+      <DTextarea
+        v-if="cleanedText"
+        v-model="cleanedText"
+        label="Cleaned Text"
+        :readonly="true"
+      />
     </DForm>
   </AppPage>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import DForm from '~/components/Form/DForm'
 import DInput from '~/components/Form/DInput'
 import DTextarea from '~/components/Form/DTextarea'
@@ -38,10 +44,31 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      actPublishMessage: 'messages/publishMessage',
+      actStartLoading: 'loading/start',
+      actStopLoading: 'loading/stop'
+    }),
     doClean() {
-      status2(this.text).then((cleanedText) => {
-        this.cleanedText = cleanedText
-      })
+      this.actStartLoading()
+      status2(this.text)
+        .then((cleanedText) => {
+          this.actStopLoading()
+          this.cleanedText = cleanedText
+          if (!this.cleanedText) {
+            this.actPublishMessage({
+              message: 'Empty clean text was generated for the given text',
+              type: 'error'
+            })
+          }
+        })
+        .catch((err) => {
+          this.actStopLoading()
+          this.actPublishMessage({
+            message: err.message,
+            type: 'error'
+          })
+        })
     }
   }
 }
