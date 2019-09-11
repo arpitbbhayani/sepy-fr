@@ -131,6 +131,36 @@ export function status6(text) {
   })
 }
 
+export function status7(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status7(text))
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message =
+          err.message || `Unable to fetch search results at the moment.`
+        reject(err)
+      })
+  })
+}
+
+export function status10(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status10(text))
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message =
+          err.message || `Unable to fetch search results at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export default {
   searchV1,
   searchV2,
