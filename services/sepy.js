@@ -146,6 +146,38 @@ export function status7(text) {
   })
 }
 
+export function status8(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status8(text))
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message =
+          err.message ||
+          `Unable to fetch term frequencies for the word at the moment.`
+        reject(err)
+      })
+  })
+}
+
+export function status9(query, docId) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status9(query, docId))
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message =
+          err.message ||
+          `Unable to fetch score for the query and doc id at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export function status10(text) {
   return new Promise((resolve, reject) => {
     dreq

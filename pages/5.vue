@@ -49,6 +49,9 @@ export default {
       actStopLoading: 'loading/stop'
     }),
     doNormalize() {
+      if (!this.text) {
+        return
+      }
       this.actStartLoading()
       status5(this.text)
         .then(({ text }) => {

@@ -51,6 +51,9 @@ export default {
       actStopLoading: 'loading/stop'
     }),
     doFetchPostings() {
+      if (!this.text) {
+        return
+      }
       this.actStartLoading()
       status6(this.text)
         .then(({ documents }) => {

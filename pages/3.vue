@@ -49,6 +49,9 @@ export default {
       actStopLoading: 'loading/stop'
     }),
     doExtractExcerpt() {
+      if (!this.text) {
+        return
+      }
       this.actStartLoading()
       status3(this.text)
         .then(({ excerpt }) => {

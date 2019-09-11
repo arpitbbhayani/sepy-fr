@@ -55,6 +55,9 @@ export default {
       actStopLoading: 'loading/stop'
     }),
     doExtractTokens() {
+      if (!this.text) {
+        return
+      }
       this.actStartLoading()
       status4(this.text)
         .then(({ tokens }) => {

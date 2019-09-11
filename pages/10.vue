@@ -51,6 +51,9 @@ export default {
       actStopLoading: 'loading/stop'
     }),
     doSearchV2() {
+      if (!this.text) {
+        return
+      }
       this.actStartLoading()
       status10(this.text)
         .then(({ documents }) => {

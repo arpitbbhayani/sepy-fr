@@ -50,6 +50,9 @@ export default {
       actStopLoading: 'loading/stop'
     }),
     doClean() {
+      if (!this.text) {
+        return
+      }
       this.actStartLoading()
       status2(this.text)
         .then(({ cleanedText }) => {
