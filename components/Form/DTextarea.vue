@@ -12,6 +12,7 @@
       :placeholder="placeholder"
       :value="value"
       :rows="rows"
+      :readonly="readonly"
       type="text"
       @keyup="updateCharactersRemaining"
       @input="updateSelf($event.target.value)"
@@ -66,6 +67,11 @@ export default {
       type: Number,
       required: false,
       default: 3
+    },
+    readonly: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data() {

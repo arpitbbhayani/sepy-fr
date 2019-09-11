@@ -58,6 +58,20 @@ export function status1() {
   })
 }
 
+export function status2(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status2(text))
+      .then((response) => {
+        resolve(response.data.text)
+      })
+      .catch((err) => {
+        err.message = err.message || `Unable to clean text at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export default {
   searchV1,
   searchV2,
