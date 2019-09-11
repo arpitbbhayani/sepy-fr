@@ -86,6 +86,20 @@ export function status3(text) {
   })
 }
 
+export function status4(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status4(text))
+      .then((response) => {
+        resolve(response.data.tokens)
+      })
+      .catch((err) => {
+        err.message = err.message || `Unable to extract tokens at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export default {
   searchV1,
   searchV2,
