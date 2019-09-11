@@ -100,6 +100,21 @@ export function status4(text) {
   })
 }
 
+export function status5(text) {
+  return new Promise((resolve, reject) => {
+    dreq
+      .get(apiEndpoints.status5(text))
+      .then((response) => {
+        resolve(response.data.text)
+      })
+      .catch((err) => {
+        err.message =
+          err.message || `Unable to normalize the word at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export default {
   searchV1,
   searchV2,

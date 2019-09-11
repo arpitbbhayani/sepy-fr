@@ -16,5 +16,7 @@ export default {
   status3: (text) =>
     process.env.API_BASE_URL + `/api/status/3?${objectToQueryParams({ text })}`,
   status4: (text) =>
-    process.env.API_BASE_URL + `/api/status/4?${objectToQueryParams({ text })}`
+    process.env.API_BASE_URL + `/api/status/4?${objectToQueryParams({ text })}`,
+  status5: (text) =>
+    process.env.API_BASE_URL + `/api/status/5?${objectToQueryParams({ text })}`
 }
