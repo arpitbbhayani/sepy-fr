@@ -1,5 +1,8 @@
 <template>
   <AppPage>
+    <sui-segment basic class="center aligned">
+      <h1>Reading the corpus</h1>
+    </sui-segment>
     <sui-divider hidden />
     <div v-if="status.documents.length">
       <sui-container class="center aligned">

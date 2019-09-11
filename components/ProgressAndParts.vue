@@ -4,7 +4,12 @@
       <Progress />
       <sui-list vertical>
         <sui-list-item v-for="part in parts" :key="part.name">
-          <sui-button fluid class="left basic aligned" @click="goto(part.id)">
+          <sui-button
+            fluid
+            class="left aligned"
+            :class="{ basic: !isActive(part.id) }"
+            @click="goto(part.id)"
+          >
             <span v-if="!isCompleted(part.id)" style="margin-right: 0.1em;"
               >➖</span
             >
@@ -57,6 +62,9 @@ export default {
     })
   },
   methods: {
+    isActive(partId) {
+      return this.$route.path === `/${partId}`
+    },
     goto(part) {
       this.$router.push(`/${part}`)
     },
