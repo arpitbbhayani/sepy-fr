@@ -1,6 +1,6 @@
-# console-fr
+# sepy-fr
 
-> Console for Sepy
+> Frontend for [SEPY](https://github.com/arpitbbhayani/sepy)
 
 ## Build Setup
 
@@ -18,5 +18,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
