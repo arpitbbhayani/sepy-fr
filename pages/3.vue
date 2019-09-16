@@ -54,9 +54,9 @@ export default {
       }
       this.actStartLoading()
       status3(this.text)
-        .then(({ excerpt }) => {
+        .then((data) => {
           this.actStopLoading()
-          this.excerpt = excerpt
+          this.excerpt = data.text
           if (!this.excerpt) {
             this.actPublishMessage({
               message: 'Empty excerpt was generated for the given text',

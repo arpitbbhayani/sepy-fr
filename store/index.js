@@ -40,7 +40,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       sepyService
         .getProgress()
-        .then((progress) => {
+        .then(({ progress }) => {
           commit('SET_PROGRESS', progress)
           resolve(progress)
         })

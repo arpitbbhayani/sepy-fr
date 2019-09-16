@@ -55,9 +55,9 @@ export default {
       }
       this.actStartLoading()
       status2(this.text)
-        .then(({ cleanedText }) => {
+        .then((data) => {
           this.actStopLoading()
-          this.cleanedText = cleanedText
+          this.cleanedText = data.text
           if (!this.cleanedText) {
             this.actPublishMessage({
               message: 'Empty clean text was generated for the given text',

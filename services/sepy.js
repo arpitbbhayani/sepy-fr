@@ -34,7 +34,7 @@ export function getProgress() {
     dreq
       .get(apiEndpoints.progress())
       .then((response) => {
-        resolve(response.data.progress)
+        resolve(response.data)
       })
       .catch((err) => {
         err.message = err.message || `Unable to fetch progress at the moment.`
