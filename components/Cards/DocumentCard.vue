@@ -11,7 +11,7 @@
         {{ document.title }}
       </h4>
       <p class="ui grey text">
-        {{ document.excerpt.slice(0, 128) || document.body.slice(0, 128) }}
+        {{ (document.excerpt || document.body).slice(0, 128) }}
       </p>
     </div>
     <div v-else>
