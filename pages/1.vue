@@ -18,6 +18,11 @@
         <h3 class="ui grey text">
           No Documents in your corpus.
         </h3>
+        <button class="ui button primary" @click="reloadCorpus">
+          Reload Corpus
+        </button>
+        <sui-divider hidden />
+        <p v-if="message" class="ui text grey">{{ message }}</p>
       </sui-segment>
     </div>
   </AppPage>
@@ -27,24 +32,44 @@
 import AppPage from '~/components/Pages/AppPage'
 import Documents from '~/components/Documents'
 
-import { status1 } from '~/services/sepy'
+import { status1, status1Reload } from '~/services/sepy'
 
 export default {
   components: {
     AppPage,
     Documents
   },
+  data() {
+    return {
+      status: null,
+      documents: [],
+      message: ''
+    }
+  },
   async asyncData({ params, store }) {
     try {
       return {
-        status: await status1()
+        status: await status1(),
+        message: ''
       }
     } catch (err) {
       store.dispatch('panic', err.message)
       return {
         status: {
-          documents: []
+          documents: [],
+          message: ''
         }
+      }
+    }
+  },
+  methods: {
+    async reloadCorpus() {
+      try {
+        await status1Reload()
+        this.status = await status1()
+        this.message = `Last reload at ${new Date()}`
+      } catch (err) {
+        this.message = `Error: ${err.message}`
       }
     }
   }

@@ -1,6 +1,20 @@
 import dreq from '~/dreq'
 import apiEndpoints from '~/constants/apiEndpoints'
 
+export function status1Reload() {
+  return new Promise((resolve, reject) => {
+    dreq
+      .post(apiEndpoints.status1Reload())
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        err.message = err.message || `Unable to reload corpus at the moment.`
+        reject(err)
+      })
+  })
+}
+
 export function searchV1(query) {
   return new Promise((resolve, reject) => {
     dreq
@@ -197,5 +211,6 @@ export default {
   searchV1,
   searchV2,
   getProgress,
-  status1
+  status1,
+  status1Reload
 }

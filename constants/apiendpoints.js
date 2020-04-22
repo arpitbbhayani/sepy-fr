@@ -11,6 +11,7 @@ export default {
     process.env.API_BASE_URL + `/api/search_v2?${objectToQueryParams({ q })}`,
   progress: () => process.env.API_BASE_URL + `/api/status`,
   status1: () => process.env.API_BASE_URL + `/api/status/1`,
+  status1Reload: () => process.env.API_BASE_URL + `/api/status/1/reload`,
   status2: (text) =>
     process.env.API_BASE_URL + `/api/status/2?${objectToQueryParams({ text })}`,
   status3: (text) =>
