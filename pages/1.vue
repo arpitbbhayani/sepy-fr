@@ -18,7 +18,11 @@
         <h3 class="ui grey text">
           No Documents in your corpus.
         </h3>
-        <button class="ui button primary" @click="reloadCorpus">
+        <button
+          :class="{ loading: isCorpusLoading }"
+          class="ui button primary"
+          @click="reloadCorpus"
+        >
           Reload Corpus
         </button>
         <sui-divider hidden />
@@ -43,7 +47,8 @@ export default {
     return {
       status: null,
       documents: [],
-      message: ''
+      message: '',
+      isCorpusLoading: false
     }
   },
   async asyncData({ params, store }) {
@@ -64,12 +69,15 @@ export default {
   },
   methods: {
     async reloadCorpus() {
+      this.isCorpusLoading = true
       try {
         await status1Reload()
         this.status = await status1()
         this.message = `Last reload at ${new Date()}`
+        this.isCorpusLoading = false
       } catch (err) {
         this.message = `Error: ${err.message}`
+        this.isCorpusLoading = false
       }
     }
   }
