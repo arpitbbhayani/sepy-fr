@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "moment": "^2.24.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "semantic-ui-vue": "^0.8.1"
   },
   "devDependencies": {
